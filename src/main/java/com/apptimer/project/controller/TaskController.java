@@ -1,5 +1,11 @@
 package com.apptimer.project.controller;
 
+import com.apptimer.project.persistence.entity.Task;
+import com.apptimer.project.service.TaskService;
+import com.apptimer.project.service.dto.TaskInDTO;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -16,8 +22,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@RequestMapping("/tasks") //Controller en PLURAL
 public class TaskController {
 
+    private final TaskService taskService;
 
+    public TaskController(TaskService taskService) {
+        this.taskService = taskService;
+    }
 
+    @PostMapping   //crear elementos
+    public Task createTask(@RequestBody TaskInDTO taskInDTO) {
+        return this.taskService.createTask(taskInDTO);
+    }
 }

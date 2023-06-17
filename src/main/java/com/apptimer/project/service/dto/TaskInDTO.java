@@ -2,6 +2,10 @@ package com.apptimer.project.service.dto;
 
 
 
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
 /**
  *
  *  Timer APP
@@ -15,5 +19,18 @@ package com.apptimer.project.service.dto;
  */
 
 //Tarea de entrada para DTO
+    //Objeto de Tranferencia de Datos
+@Data  //Data añade los Getters y Setters
 public class TaskInDTO {
+
+    /*private Long id;*/
+    private String title;
+    private String description;
+/*
+    private LocalDateTime createdDate;
+*/
+    private LocalDateTime eta;
+//   /* private boolean finished;
+//    private TaskStatus taskStatus;*/
+
 }
