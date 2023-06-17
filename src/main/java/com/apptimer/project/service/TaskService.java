@@ -1,7 +1,10 @@
 package com.apptimer.project.service;
 
+
+import com.apptimer.project.mapper.TaskInDTOToTask;
 import com.apptimer.project.persistence.entity.Task;
 import com.apptimer.project.persistence.entity.repository.TaskRepository;
+import com.apptimer.project.service.dto.TaskInDTO;
 import org.springframework.stereotype.Service;
 
 
@@ -19,19 +22,26 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TaskService {
-
     // @Bean
     //Inyección de Dependencias siempre con contructor
-    private final TaskRepository taskRepository;
+    private final TaskRepository repository;
+    private final TaskInDTOToTask mapper; //mapper
 
     //Contrutor inyección de dependencias
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
+    public TaskService(TaskRepository repository, TaskInDTOToTask mapper) {
+        this.repository = repository;
+        this.mapper = mapper;
     }
 
-    public Task createTask(Task task) {
+    public Task createTask(TaskInDTO taskInDTO) {
+
+        Task task = mapper.map(taskInDTO);
+        return this.repository.saveAll(task);
 
     }
 
+/*    public List<Task> findAll() {
+        return this.repository.findAll();
+    }*/
 
 }
