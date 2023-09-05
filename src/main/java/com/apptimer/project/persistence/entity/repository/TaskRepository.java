@@ -2,9 +2,11 @@ package com.apptimer.project.persistence.entity.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.scheduling.config.Task;
 
-
+/*import org.springframework.scheduling.config.Task;
+ Este era el error, importaste TASK de scheduling NO de tu Entity
+ */
+import package com.apptimer.project.persistence.entity.Task;
 /**
  *
  *  Timer APP
