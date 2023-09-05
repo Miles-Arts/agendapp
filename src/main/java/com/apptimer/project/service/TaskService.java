@@ -36,10 +36,11 @@ public class TaskService {
     public Task createTask(TaskInDTO taskInDTO) {
 
         Task task = mapper.map(taskInDTO);
-        return this.repository.saveAll(task);
-
+        return this.repository.save(task);
+        // implemente el métod correcto save()
     }
 
+    // No estoy tan seguro de que puedas implementar el método findAll sin una interfaz, pero podrías intentarlo
 /*    public List<Task> findAll() {
         return this.repository.findAll();
     }*/
